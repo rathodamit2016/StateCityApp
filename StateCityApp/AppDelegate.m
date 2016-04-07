@@ -13,10 +13,47 @@
 @end
 
 @implementation AppDelegate
+@synthesize dbapth;
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     // Override point for customization after application launch.
+    NSArray *arrpath=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *stpath=[arrpath objectAtIndex:0];
+    dbapth=[stpath stringByAppendingPathComponent:@"mydb2016.fgh"];
+    NSLog(@"%@",dbapth);
+    if (![[NSFileManager defaultManager]fileExistsAtPath:dbapth])
+    {
+        sqlite3 *dbsql;
+        //////// Query
+        NSArray *arr_query=[[NSArray alloc]init];
+        arr_query=[arr_query arrayByAddingObject:@"create table stud(s_id integer primary key autoincrement,s_nm varchar(150),s_st integer,s_ct integer)"];
+        arr_query=[arr_query arrayByAddingObject:@"create table state(st_id integer primary key autoincrement,st_nm varchar(150))"];
+        arr_query=[arr_query arrayByAddingObject:@"pragma foreign_keys=on"];
+        arr_query=[arr_query arrayByAddingObject:@"create table city(ct_id integer primary key autoincrement,ct_nm varchar(150),state_id integer,foreign key(state_id) references state(st_id))"];
+        arr_query=[arr_query arrayByAddingObject:@"insert into state(st_nm)values('GUJARAT')"];
+        arr_query=[arr_query arrayByAddingObject:@"insert into state(st_nm)values('MAHARASHTRA')"];
+        arr_query=[arr_query arrayByAddingObject:@"insert into city(ct_nm,state_id)values('RAJKOT',1)"];
+        arr_query=[arr_query arrayByAddingObject:@"insert into city(ct_nm,state_id)values('JAMNAGER',1)"];
+        arr_query=[arr_query arrayByAddingObject:@"insert into city(ct_nm,state_id)values('SURAT',1)"];
+        arr_query=[arr_query arrayByAddingObject:@"insert into city(ct_nm,state_id)values('BOMBAY',2)"];
+        arr_query=[arr_query arrayByAddingObject:@"insert into city(ct_nm,state_id)values('PUNE',2)"];
+        //////// Query
+        for (int i=0; i<arr_query.count; i++)
+        {
+            if (sqlite3_open([dbapth UTF8String], &dbsql)==SQLITE_OK)
+            {
+                sqlite3_stmt *ppStmt;
+                if (sqlite3_prepare_v2(dbsql,[[arr_query objectAtIndex:i]UTF8String], -1,&ppStmt, nil)==SQLITE_OK)
+                {
+                    sqlite3_step(ppStmt);
+                }
+                sqlite3_finalize(ppStmt);
+            }
+            sqlite3_close(dbsql);
+        }
+    }
+    
     return YES;
 }
 

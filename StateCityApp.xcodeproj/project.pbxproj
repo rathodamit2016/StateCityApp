@@ -14,6 +14,8 @@
 		A74AAC711CB40A0B0001E6CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A74AAC701CB40A0B0001E6CC /* Images.xcassets */; };
 		A74AAC741CB40A0B0001E6CC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A74AAC721CB40A0B0001E6CC /* LaunchScreen.xib */; };
 		A74AAC801CB40A0B0001E6CC /* StateCityAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A74AAC7F1CB40A0B0001E6CC /* StateCityAppTests.m */; };
+		A74AAC8A1CB40C570001E6CC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A74AAC891CB40C570001E6CC /* libsqlite3.dylib */; };
+		A74AAC8D1CB40E100001E6CC /* Dboperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A74AAC8C1CB40E100001E6CC /* Dboperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		A74AAC791CB40A0B0001E6CC /* StateCityAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StateCityAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A74AAC7E1CB40A0B0001E6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A74AAC7F1CB40A0B0001E6CC /* StateCityAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StateCityAppTests.m; sourceTree = "<group>"; };
+		A74AAC891CB40C570001E6CC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		A74AAC8B1CB40E100001E6CC /* Dboperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dboperation.h; sourceTree = "<group>"; };
+		A74AAC8C1CB40E100001E6CC /* Dboperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dboperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A74AAC8A1CB40C570001E6CC /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +69,9 @@
 		A74AAC571CB40A0A0001E6CC = {
 			isa = PBXGroup;
 			children = (
+				A74AAC8B1CB40E100001E6CC /* Dboperation.h */,
+				A74AAC8C1CB40E100001E6CC /* Dboperation.m */,
+				A74AAC891CB40C570001E6CC /* libsqlite3.dylib */,
 				A74AAC621CB40A0A0001E6CC /* StateCityApp */,
 				A74AAC7C1CB40A0B0001E6CC /* StateCityAppTests */,
 				A74AAC611CB40A0A0001E6CC /* Products */,
@@ -222,6 +231,7 @@
 				A74AAC6C1CB40A0A0001E6CC /* ViewController.m in Sources */,
 				A74AAC691CB40A0A0001E6CC /* AppDelegate.m in Sources */,
 				A74AAC661CB40A0A0001E6CC /* main.m in Sources */,
+				A74AAC8D1CB40E100001E6CC /* Dboperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
